@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let choices = ["Rock", "Paper", "Scissors"];
+        let playerScore = 0;
+        let pcScore = 0;
+
+// Gets player's choice
+        let playerSelection = "";
+        function getPlayerSelection() {
+        playerSelection = prompt("Choose your weapon...", "Rock");
+        }
+// Gets computer's choice
+        function randomiser() {
+            let randomIndex = Math.floor(Math.random() * choices.length);    
+            return choices[randomIndex];
+        }
+
+        let pcSelection = "";
+        function getComputerChoice() {
+            pcSelection = randomiser();
+        }
+
+// Transforms all text entries to lowercase
+        function lowerCase() {
+            playerSelection = playerSelection.toLowerCase();
+            pcSelection = pcSelection.toLowerCase();
+        }
+
+// Determines the results
+        function selectResult() {
+            let rockFail = (playerSelection == "rock") && (pcSelection == "paper");
+            let paperFail = (playerSelection == "paper") && (pcSelection == "scissors");
+            let scissorsFail = (playerSelection == "scissors") && (pcSelection == "rock");
+
+
+
+            if (rockFail || paperFail || scissorsFail) {
+                console.log("You chose " + playerSelection + ". The PC chose " + pcSelection + " and wins! You suck.");
+                ++pcScore;
+            } else if (playerSelection == pcSelection) {
+                console.log("DRAW! You both chose " + playerSelection + ". Try again.");
+            } else if (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
+                console.log("Choose a different weapon.");
+                playARound;
+            } else {
+                console.log("You chose " + playerSelection + ". The PC chose " + pcSelection + " and loses! You have won this mighty battle");
+                ++playerScore;
+            }
+        }
+
+
+
+// Plays a round        
+        function playARound() {
+            getPlayerSelection();
+            getComputerChoice();
+            lowerCase();
+            selectResult();
+        }
+
+        playARound();
+        alert("Player Score = " + playerScore + ". Computer Score = " + pcScore + ".");
+        playARound();
+        alert("Player Score = " + playerScore + ". Computer Score = " + pcScore + ".");
+        playARound();
+        alert("Player Score = " + playerScore + ". Computer Score = " + pcScore + ".");
+        playARound();
+        alert("Player Score = " + playerScore + ". Computer Score = " + pcScore + ".");
+        playARound();
+        alert("Player Score = " + playerScore + ". Computer Score = " + pcScore + ".");
+        
+    </script>
+</body>
+</html>
